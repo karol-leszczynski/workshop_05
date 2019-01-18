@@ -63,6 +63,28 @@ public class MemoryBookService {
         return bookx;
     }
 
+    public void udpadeBook (long id, Book editedBook){
+        Book exitingBook = getBook(id);
+        exitingBook.setIsbn(editedBook.getIsbn());
+        exitingBook.setTitle(editedBook.getTitle());
+        exitingBook.setAuthor(editedBook.getAuthor());
+        exitingBook.setPublisher(editedBook.getPublisher());
+        exitingBook.setType(editedBook.getType());
+
+    }
+
+    public void deleteBook (long id){
+        Book bookToRemove = null;
+        for (Book book : list) {
+            if (book.getId()==id){
+                bookToRemove = book;
+            }
+        }
+        if (bookToRemove!=null) {
+            list.remove(bookToRemove);
+        }
+    }
+
     public void setList(List<Book> list) {
         this.list = list;
     }

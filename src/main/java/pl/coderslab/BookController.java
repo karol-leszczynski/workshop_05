@@ -51,6 +51,15 @@ public class BookController {
         memoryBookService.addBook(newBook);
     }
 
+    @RequestMapping(path = "/{id}", method = {RequestMethod.PUT})
+    public void updateBook (@PathVariable long id, @RequestBody Book editedBook){
+        memoryBookService.udpadeBook(id, editedBook);
+    }
+
+    @RequestMapping(path = "/{id}", method = {RequestMethod.DELETE})
+    public void removeBook (@PathVariable long id){
+        memoryBookService.deleteBook(id);
+    }
 
 
 }
