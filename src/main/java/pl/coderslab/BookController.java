@@ -1,8 +1,7 @@
 package pl.coderslab;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.model.Book;
 
 import java.util.List;
@@ -41,5 +40,17 @@ public class BookController {
     public List<Book> bookDeliver(){
         return memoryBookService.getList();
     }
+
+    @RequestMapping("/{id}")
+    public Book oneBookDeliver(@PathVariable long id){
+        return memoryBookService.getBook(id);
+    }
+
+    @RequestMapping(path = "/", method = {RequestMethod.POST})
+    public void addBook (@RequestBody Book newBook){
+        memoryBookService.addBook(newBook);
+    }
+
+
 
 }

@@ -8,7 +8,12 @@ import java.util.List;
 
 @Service
 public class MemoryBookService {
+
     private List<Book> list;
+
+    public void addBook (Book book){
+        list.add(book);
+    }
 
     public MemoryBookService() {
         list = new ArrayList<>();
@@ -46,6 +51,16 @@ public class MemoryBookService {
 
     public List<Book> getList() {
         return list;
+    }
+
+    public Book getBook (long id){
+        Book bookx = null;
+        for (Book book:getList()) {
+            if (book.getId()==id){
+                bookx = book;
+            }
+        }
+        return bookx;
     }
 
     public void setList(List<Book> list) {
